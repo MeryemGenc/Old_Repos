@@ -1,0 +1,149 @@
+
+nav{
+    z-index: 50;
+    width: 100%;
+    height: 5.5em;
+    padding-left: 5%;
+    padding-right: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: fixed;
+    background-color: $gray5;
+    @include mq (tablet){
+        justify-content: space-between;
+        padding-left: 7%;
+        padding-right: 5%;
+        height: 5.5em;
+    }
+    @include mq (phone){
+        justify-content: space-between;
+        padding-left: 5%;
+        padding-right: 4%;
+    }
+
+    .head{
+        width: 25%;
+        height: 100%;
+        display: flex;
+        //justify-content: space-between;
+        align-items: center;
+        @include mq (phone){
+            width: 50%;
+        }
+        .head-box{
+            padding: .7em;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border : 1px solid $white;
+            @include mq (tablet){
+                padding: 14px;
+            }
+            @include mq (phone){
+                padding: 8px;
+                margin-top: 10px;
+            }
+            a{
+            letter-spacing: 6px;
+            font-family: $fontheebo;
+            font-size: 1.4em;
+            color: $white;
+            @include mq (tablet){
+                font-size: 28px;
+                letter-spacing: 2px;
+            }
+            @include mq (phone){
+                font-size: 25px;
+                letter-spacing: 3px;
+            }
+            }
+        }
+    }
+    .nav{
+        width: 70%;
+        height: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        font-family: $fontheebo;
+        @include mq (phone){
+            z-index: 5;
+            position: absolute;
+            right: 0px;
+            height: 90vh;
+            top: 5.5em;
+            background-color: $gray4;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            transform: translateX(100%);
+            transition: transform .5s ease-in;
+        }
+        &.nav-active{
+            display: flex;
+            transform: translateX(0%);
+        }
+        .nav-li{
+            z-index: 6;
+            @include mq (phone){
+                opacity: 1;
+                z-index: 6;
+            }
+            a{
+                letter-spacing: 5px;
+                font-family: $fontheebo;
+                font-size: .9em;
+                color: $white;
+                @include mq (tablet){
+                    font-size: .9em;
+                    letter-spacing: 4px;
+                }
+                }
+        }
+    }
+    .burger{
+        
+        z-index: 6;
+        display: none;
+        cursor: pointer;
+        @include mq (phone){
+            display: block;
+        }
+        div{
+            width: 25px;
+            height: 3px;
+            background-color: $white;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            transition: all 0.3s ease;
+        }
+    }
+}
+
+//burger +
+.toggle{
+    .line1{
+        transform: rotate(-45deg) translate(-5px,6px);
+    }
+    .line2{
+        opacity: 0;
+    }
+    .line3{
+        transform: rotate(45deg) translate(-5px,-6px);
+    }
+}
+
+@keyframes navLinkFade{
+    from{
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}

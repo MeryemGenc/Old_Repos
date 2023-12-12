@@ -1,0 +1,29 @@
+﻿@model MvcCv.Models.Sinif.Class1
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>HOBİ</th>
+            <th>SİL</th>
+            <th>GÜNCELLER</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model.deger5)
+        {
+        <tr>
+            <th>@x.ID</th>
+            <td>@x.INTEREST</td>
+            <td>@Html.ActionLink("Sil Butonu", "Sil", new { id = x.ID }, new { @class = "btn btn-danger", onclick = "return confirm('Emin misiniz?')" })</td>
+            <td><a href="/Hobiler/HobiGetir/@x.ID" class="btn btn-success">Güncelle</a></td>
+        </tr>
+        }
+    </tbody>
+</table>
+<a href="/Hobiler/YeniHobiler/" class="btn btn-info">Yeni Hobi Ekle</a>
+

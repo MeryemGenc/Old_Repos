@@ -1,0 +1,36 @@
+﻿@using MvcCv.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<TBLSKILLS>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>YETENEKLERİM</th>
+            <th>SİL</th>
+            <th>GÜNCELLER</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <th>@x.ID</th>
+                <td>@x.SKILL</td>
+                <td>@Html.ActionLink("Sil", "Sil", new { id = x.ID }, new { @class = "btn btn-warning", onclick = "return confirm('Emin misiniz?')" })</td>
+                <td><a href="/Yetenekler/YetenekGetir/@x.ID" class="btn btn-success">Güncelle</a></td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))
+
+<a href="/Yetenekler/YeniYetenek/" class="btn btn-info">Yeni Yetenek Ekle</a>
+
